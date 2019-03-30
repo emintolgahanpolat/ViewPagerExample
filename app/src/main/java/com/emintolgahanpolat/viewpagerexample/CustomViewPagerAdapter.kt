@@ -24,8 +24,7 @@ class CustomViewPagerAdapter(
     }
 
     var padding_in_px =mContext.resources.getDimension(R.dimen.card_margin).toInt()
-
-    //mContext.resources.getDimension(R.dimen.dots_font_size).toInt()
+    
     private val count: Int = Math.ceil((arrayList.size).toDouble() / (row * col)).toInt()
 
 
@@ -138,26 +137,6 @@ class CustomViewPagerAdapter(
     }
 
 
-    private fun saveToInternalStorage(bitmapImage: Bitmap) {
-
-
-        val mypath = File(mContext.filesDir, "profile.jpg")
-
-        var fos: FileOutputStream? = null
-        try {
-            fos = FileOutputStream(mypath)
-            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos)
-        } catch (e: Exception) {
-            e.printStackTrace()
-        } finally {
-            try {
-                fos!!.close()
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-
-        }
-    }
 }
 
 
