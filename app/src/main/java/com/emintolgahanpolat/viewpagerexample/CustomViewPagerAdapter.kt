@@ -12,26 +12,26 @@ import kotlinx.android.synthetic.main.item_card.view.*
 import java.io.*
 
 class CustomViewPagerAdapter(
-    private val mContext: Context,
+    private val context: Context,
     val row: Int,
     val col: Int,
     val arrayList: ArrayList<CategoryModel> = ArrayList<CategoryModel>()
 ) : PagerAdapter(), View.OnClickListener {
     override fun onClick(view: View?) {
 
-        Toast.makeText(mContext, "id: ${view?.id}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, "id: ${view?.id}", Toast.LENGTH_SHORT).show()
 
     }
 
-    var padding_in_px =mContext.resources.getDimension(R.dimen.card_margin).toInt()
-    
+    var padding_in_px =context.resources.getDimension(R.dimen.card_margin).toInt()
+
     private val count: Int = Math.ceil((arrayList.size).toDouble() / (row * col)).toInt()
 
 
     override fun instantiateItem(collection: ViewGroup, position: Int): Any {
 
 
-        val rootView = LinearLayout(mContext)
+        val rootView = LinearLayout(context)
         rootView.layoutParams = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.MATCH_PARENT
@@ -47,7 +47,7 @@ class CustomViewPagerAdapter(
 
             if (itemIndex < arrayList.size - 1) {
 
-                val rowView = LinearLayout(mContext)
+                val rowView = LinearLayout(context)
                 rowView.layoutParams = LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
                    0,1F
@@ -64,7 +64,7 @@ class CustomViewPagerAdapter(
 
 
                         if (j > 0) {
-                            val vSeperator = View(mContext)
+                            val vSeperator = View(context)
                             vSeperator.layoutParams = LinearLayout.LayoutParams(
                                 1,
                                 ViewGroup.LayoutParams.MATCH_PARENT
@@ -77,15 +77,15 @@ class CustomViewPagerAdapter(
 
                         val modelObject = arrayList[itemIndex]
 
-                        val itemView = FrameLayout(mContext)
+                        val itemView = FrameLayout(context)
                         itemView.layoutParams = LinearLayout.LayoutParams(
                             LinearLayout.LayoutParams.MATCH_PARENT,
                             LinearLayout.LayoutParams.MATCH_PARENT,1F
                         )
 
-                        itemView.id=j
+                        itemView.id=itemIndex
                         itemView.setOnClickListener(this)
-                        val view = LayoutInflater.from(mContext).inflate( R.layout.item_card,collection, false)
+                        val view = LayoutInflater.from(context).inflate( R.layout.item_card,collection, false)
 
                         view.ivIcon.setImageResource(modelObject.icon)
                         view.tvTitle.text=modelObject.name
@@ -101,7 +101,7 @@ class CustomViewPagerAdapter(
                 }
 
                 if (i > 0) {
-                    val vSeperator = View(mContext)
+                    val vSeperator = View(context)
                     vSeperator.layoutParams = LinearLayout.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         1
