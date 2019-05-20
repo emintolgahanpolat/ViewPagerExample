@@ -25,6 +25,13 @@ class CustomViewPagerAdapter(
 
     var padding_in_px =context.resources.getDimension(R.dimen.card_margin).toInt()
 
+    init {
+        var dummyItemCount=(row*col)-(arrayList.size%(row*col))
+
+        for (i in 1..dummyItemCount){
+            arrayList.add(CategoryModel(null,null))
+        }
+    }
     private val count: Int = Math.ceil((arrayList.size).toDouble() / (row * col)).toInt()
 
 
@@ -82,12 +89,18 @@ class CustomViewPagerAdapter(
                             LinearLayout.LayoutParams.WRAP_CONTENT,1F
                         )
 
-                        itemView.id=itemIndex
-                        itemView.setOnClickListener(this)
                         val view = LayoutInflater.from(context).inflate( R.layout.item_card,collection, false)
 
-                        view.ivIcon.setImageResource(modelObject.icon)
-                        view.tvTitle.text=modelObject.name
+                        if(modelObject.name!=null){
+                            itemView.id=itemIndex
+                            itemView.setOnClickListener(this)
+
+                            view.ivIcon.setImageResource(modelObject.icon!!)
+                            view.tvTitle.text=modelObject.name
+                        }else{
+                            view.visibility=View.INVISIBLE
+                        }
+
 
                         itemView.addView(view)
                         rowView.addView(itemView)

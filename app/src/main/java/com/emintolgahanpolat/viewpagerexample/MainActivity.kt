@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
 
         val viewPager = findViewById<View>(R.id.viewpager) as ViewPager
-        adapter = CustomViewPagerAdapter(this, 3, 4, arrayList)
+        adapter = CustomViewPagerAdapter(this, 3, 2, arrayList)
         viewPager.adapter = adapter
 
 
