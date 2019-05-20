@@ -36,7 +36,7 @@ class CustomViewPagerAdapter(
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.MATCH_PARENT
         )
-        rootView.weightSum=2F
+
         rootView.setPadding(padding_in_px, padding_in_px, padding_in_px, padding_in_px)
 
         rootView.orientation = LinearLayout.VERTICAL
@@ -52,7 +52,6 @@ class CustomViewPagerAdapter(
                     LinearLayout.LayoutParams.MATCH_PARENT,
                    0,1F
                 )
-                rowView.weightSum=2F
                 rowView.orientation = LinearLayout.HORIZONTAL
                 rowView.layoutParams.apply { (this as LinearLayout.LayoutParams).weight = 1f }
 
@@ -79,8 +78,8 @@ class CustomViewPagerAdapter(
 
                         val itemView = FrameLayout(context)
                         itemView.layoutParams = LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.MATCH_PARENT,
-                            LinearLayout.LayoutParams.MATCH_PARENT,1F
+                            LinearLayout.LayoutParams.WRAP_CONTENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT,1F
                         )
 
                         itemView.id=itemIndex
